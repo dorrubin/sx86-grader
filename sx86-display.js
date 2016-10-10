@@ -114,6 +114,7 @@
     for (var i = 0; i < instructions.length;i++) {
       sx86.mem.ram[i+31] = instructions[i];
     }
+    sx86.mem.raw_instruction = instructions;
     exports.current_program = instructions;
     sx86.step(30); // Set to the beginning of the program space.
   };

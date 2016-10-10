@@ -15,9 +15,9 @@ var LoadProgram = function(input_instructions){
 };
 
 QUnit.config.autostart = false;
-QUnit.config.testTimeout = 2000;
+QUnit.config.testTimeout = 50;
 require(
-  [ "tests/testQuestion2"],
+  [ "tests/testQuestion1", "tests/testQuestion2", "tests/testQuestion3", "tests/testQuestion4"],
   function() {
     QUnit.start();
   }

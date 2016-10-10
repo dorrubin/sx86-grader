@@ -33,7 +33,8 @@
   exports.mem = {
     flags: {'cmp': 0, 'jmp': 0},
     ram: new Array(4096),
-    regs: new Array(7)
+    regs: new Array(7),
+    raw_instruction: []
   };
 
   /**
@@ -43,7 +44,8 @@
    */
   exports.clear = function() {
     for (var i = 0; i < 7; i++) exports.mem.regs[i] = 0;
-    for (var i = 0; i < 4096; i++) exports.mem.ram[i] = -1;
+    for (var j = 0; j < 4096; j++) exports.mem.ram[j] = -1;
+    exports.mem.raw_instruction = [];
     exports.mem.flags.jmp = 0;
     exports.mem.flags.cmp = 0;
   };
