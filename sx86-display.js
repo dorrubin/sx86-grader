@@ -87,17 +87,18 @@
   };
 
   exports.run = function(time) {
+    //set arbitrary counter to prevent infinite loops -- could be done better
+    var counter = 0;
     if (time !== 0) {
       if (exports.running === 0) {
       exports.update_interval = setInterval("sx86_display.next_step_update_display()",time);
       exports.running = 1;
       }
     } else {
-      while ((sx86.mem.ram[sx86.mem.regs[6]] > 0x0000) && (sx86.mem.ram[sx86.mem.regs[6]] <= 0xffff)){
+      while ((sx86.mem.ram[sx86.mem.regs[6]] > 0x0000) && (sx86.mem.ram[sx86.mem.regs[6]] <= 0xffff) && counter < 1000){
         sx86.step();
+        counter++;
       }
-      // No need to update display
-      // exports.update_display();
     }  
   };
 

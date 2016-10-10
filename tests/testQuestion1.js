@@ -12,6 +12,7 @@ QUnit.test( "test the content of address 2016", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
     LoadProgram(submissions[i].question1);
     sx86_display.run(0);
+    setTimeout(function(){ sx86_display.stop(); }, 25);
     assert.equal( sx86.mem.ram[2016], 2016, submissions[i].studentID + ": the 2016th memory address should contain 2016" );
   }
 });
