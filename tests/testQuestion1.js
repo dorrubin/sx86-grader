@@ -3,41 +3,51 @@
 //Case A
 //No unique inputs
 QUnit.module( "testQuestionCase1A", {
-  before: function() {
+  beforeEach: function() {
     sx86.initialize();
-    LoadProgram('9000904090a490f85002100180433023b0000000');
-    sx86_display.run(0);
   }
 });
 
 QUnit.test( "test the content of address 2016", function( assert ) {
-  assert.equal( sx86.mem.ram[2016], 2016, "the 2016th memory address should contain 2016" );
+  for(var i = 0; i < submissions.length; i++) {
+    LoadProgram(submissions[i].question1);
+    sx86_display.run(0);
+    assert.equal( sx86.mem.ram[2016], 2016, submissions[i].studentID + ": the 2016th memory address should contain 2016" );
+  }
 });
 
 
 //Case B
-//No unique inputs
+//Analyze Code
 QUnit.module( "testQuestionCase1B", {
-  before: function() {
+  beforeEach: function() {
     sx86.initialize();
-    LoadProgram('9000904090a490f85002100180433023b0000000');
-    sx86_display.run(0);
   }
 });
 
-QUnit.test( "there should not be more than 10 instructions", function( assert ) {
-    var length = sx86.mem.raw_instruction.length;
-    assert.ok( length <= 10, "there should be less than 10 instructions to complete this program" );
+QUnit.test( "the program should be within range of number of instructions", function( assert ) {
+  for(var i = 0; i < submissions.length; i++) {
+    var original = submissions[i].question1;
+    //must have made an attempt -- 50% of solution
+    assert.ok( original.length >= 20, submissions[i].studentID + ": there should be greater than 20 instructions characters to complete this program" );
+    //answer can be done in 40-- give 20% buffer
+    assert.ok( original.length <= 50, submissions[i].studentID + ": there should be less than 50 instructions characters to complete this program" );
+  }
 });
 
 QUnit.test( "there can not be repetitive instructions", function( assert ) {
-    var length = sx86.mem.raw_instruction.length;
-    var instruction = sx86.mem.raw_instruction;
+  for(var i = 0; i < submissions.length; i++) {
+    var length = submissions[i].question1.length;
+    var instruction = submissions[i].question1;
     var noDups = true;
-    for(var i = 0; i < length - 1; i++) {
-        if(instruction[i] == instruction[i + 1]) {
-            noDups = false;
-        }
+    for(var j = 0; j < length - 4; j += 4) {
+      var current = instruction.slice(j, j + 4);
+      var next = instruction.slice(j + 4, j + 8);
+      if(current == next) {
+          noDups = false;
+          break;
+      }
     }
-  assert.ok(noDups, "there should be no consecutive repeat instructions" );
+    assert.ok(noDups, submissions[i].studentID + ": there should be no consecutive repeat instructions" );
+  }
 });
