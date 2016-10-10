@@ -14,11 +14,21 @@ var LoadProgram = function(input_instructions){
     sx86_display.load_program(program);
 };
 
-QUnit.config.autostart = false;
-QUnit.config.testTimeout = 50;
-require(
-  [ "tests/testQuestion1", "tests/testQuestion2", "tests/testQuestion3", "tests/testQuestion4"],
-  function() {
-    QUnit.start();
-  }
-);
+var results = [];
+var filenames = ["sample1", "sample2"];
+
+// for(var i = 0; i < filenames.length; i++) {
+    QUnit.config.autostart = false;
+    QUnit.config.testTimeout = 50;
+    require(
+      [ "tests/testQuestion1", "tests/testQuestion2", "tests/testQuestion3", "tests/testQuestion4"],
+      function() {
+        QUnit.start();
+      }
+    );
+
+    QUnit.jUnitReport = function(report) {
+        report.results.name = filenames[0];
+        results.push(report);
+    };
+// }
