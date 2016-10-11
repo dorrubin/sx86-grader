@@ -10,7 +10,7 @@ QUnit.module( "testQuestionCase3A", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question3;
+    var original = submissions[i].Q3;
     var userProgram = original.slice(48,-1);
     // input a = 3, b = 4, c = 5, d = 2
     var testInputs = "90019043b00190029044b00190039045b00190049042b001";
@@ -32,7 +32,7 @@ QUnit.module( "testQuestionCase3B", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question3;
+    var original = submissions[i].Q3;
     var userProgram = original.slice(48,-1);
     var testInputs = "90019040b00190029040b00190039040b00190049040b001";
     var testProgram = testInputs + userProgram;
@@ -52,7 +52,7 @@ QUnit.module( "testQuestionCase3C", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question3;
+    var original = submissions[i].Q3;
     var userProgram = original.slice(48,-1);
     // input a = 3, b = 4, c = 5, d = 2
     var testInputs = "91419103b144914290c4b14390c39105b0c490c49102b0c4";
@@ -73,7 +73,7 @@ QUnit.module( "testQuestionCase3D", {
 
 QUnit.test( "the number of instructions should be within range", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question3;
+    var original = submissions[i].Q3;
     //must have made an attempt -- 50% of solution
     assert.ok( original.length >= 60, submissions[i].studentID + ": there should be greater than 60 instructions to complete this program" );
     //answer can be done in 128-- give ~20% buffer
@@ -83,7 +83,7 @@ QUnit.test( "the number of instructions should be within range", function( asser
 
 QUnit.test( "there can not be repetitive instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var instruction = submissions[i].question3;
+    var instruction = submissions[i].Q3;
     var length = instruction.length;
     var noDups = true;
     for(var j = 0; j < length - 4; j += 4) {

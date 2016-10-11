@@ -10,7 +10,7 @@ QUnit.module( "testQuestionCase2A", {
 
 QUnit.test( "test double of memory address 10 and triple of 15", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question2;
+    var original = submissions[i].Q2;
     var userProgram = original.slice(24,-1);
     // input 6 and 7
     var testInputs = "900a9046b001900f9047b001";
@@ -32,7 +32,7 @@ QUnit.module( "testQuestionCase2B", {
 
 QUnit.test( "test double of memory address 10", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question2;
+    var original = submissions[i].Q2;
     var userProgram = original.slice(24,-1);
     // input 0 and 0 
     var testInputs = "900a9040b001900f9040b001";
@@ -54,7 +54,7 @@ QUnit.module( "testQuestionCase2C", {
 
 QUnit.test( "test double of memory address 10 and triple of 15", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question2;
+    var original = submissions[i].Q2;
     var userProgram = original.slice(24,-1);
     // input 6 and 7
     var testInputs = "904a90c6b043910f9087b102";
@@ -76,7 +76,7 @@ QUnit.module( "testQuestionCase2D", {
 
 QUnit.test( "the program should be within range of number of instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question2;
+    var original = submissions[i].Q2;
     //must have made an attempt -- 50% of solution
     assert.ok( original.length >= 50, submissions[i].studentID + ": there should be greater than 50 instruction characters to complete this program" );
     //answer can be done in 100-- give 20% buffer
@@ -86,8 +86,8 @@ QUnit.test( "the program should be within range of number of instructions", func
 
 QUnit.test( "there can not be repetitive instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var length = submissions[i].question2.length;
-    var instruction = submissions[i].question2;
+    var length = submissions[i].Q2.length;
+    var instruction = submissions[i].Q2;
     var noDups = true;
     for(var j = 0; j < length - 4; j += 4) {
       var current = instruction.slice(j, j + 4);

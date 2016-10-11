@@ -14,10 +14,10 @@ var LoadProgram = function(input_instructions) {
     sx86_display.load_program(program);
 };
 
-
-var submissions = [correct, incorrect];
+var submissions = JSON.parse(data);
 var studentRoster = {};
 for (var i = 0; i < submissions.length; i++) {
+    console.log(submissions[i].studentID);
     studentRoster[submissions[i].studentID] = [0,0,0,0,0];
 }
 

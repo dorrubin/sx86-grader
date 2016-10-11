@@ -10,7 +10,7 @@ QUnit.module( "testQuestionCase4A", {
 
 QUnit.test( "test content of register 22", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question4;
+    var original = submissions[i].Q4;
     var userProgram = original.slice(12,-1);
     var testInputs = "9001905db001";
     var testProgram = testInputs + userProgram;
@@ -31,7 +31,7 @@ QUnit.module( "testQuestionCase4B", {
 
 QUnit.test( "test double of memory address 22", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question4;
+    var original = submissions[i].Q4;
     var userProgram = original.slice(12,-1);
     var testInputs = "90019040b001";
     var testProgram = testInputs + userProgram;
@@ -51,7 +51,7 @@ QUnit.module( "testQuestionCase4C", {
 
 QUnit.test( "test double of memory address 22", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-   var original = submissions[i].question4;
+   var original = submissions[i].Q4;
     var userProgram = original.slice(12,-1);
     var testInputs = "91419128b144";
     var testProgram = testInputs + userProgram;
@@ -71,7 +71,7 @@ QUnit.module( "testQuestionCase4D", {
 
 QUnit.test( "the number of instructions should be within range", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].question4;
+    var original = submissions[i].Q4;
     //must have made an attempt -- 50% of solution
     assert.ok( original.length >= 40, submissions[i].studentID + ": there should be greater than 60 instructions to complete this program" );
     //answer can be done in 68-- give ~50% buffer
@@ -81,7 +81,7 @@ QUnit.test( "the number of instructions should be within range", function( asser
 
 QUnit.test( "there can not be repetitive instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var instruction = submissions[i].question4;
+    var instruction = submissions[i].Q4;
     var length = instruction.length;
     var noDups = true;
     for(var j = 0; j < length - 4; j += 4) {
