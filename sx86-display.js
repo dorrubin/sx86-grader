@@ -83,7 +83,7 @@
     if ((sx86.mem.ram[sx86.mem.regs[6]] > 0x0000) && (sx86.mem.ram[sx86.mem.regs[6]] <= 0xffff)) { // Treat negative values as halt
       sx86.step();
       exports.update_display();
-    } 
+    }
   };
 
   exports.run = function(time) {
@@ -99,13 +99,13 @@
         sx86.step();
         counter++;
       }
-    }  
+    }
   };
 
   exports.stop = function() {
     exports.running = 0;
     clearInterval(exports.update_interval);
-  }
+  };
   /**
    * Takes instructions, an array of 16-bit instructions, and loads them into the ram.
    * starting at address 31 the beginning of the program memory.

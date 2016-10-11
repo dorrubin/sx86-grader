@@ -13,6 +13,8 @@
 
     var currentRun, currentModule, currentTest, assertCount;
 
+    var testResults = [];
+
     // Gets called when a report is generated.
     QUnit.jUnitReport = function(/* data */) {
         // Override me!
@@ -25,8 +27,7 @@
             passed: 0,
             failed: 0,
             start: new Date(),
-            time: 0,
-            student_id: ""
+            time: 0
         };
     });
 
@@ -39,7 +40,6 @@
             failed: 0,
             start: new Date(),
             time: 0,
-            student_id: "",
             stdout: [],
             stderr: []
         };
@@ -73,7 +73,9 @@
             failedAssertions: [],
             total: 0,
             passed: 0,
+            passed_students: [],
             failed: 0,
+            failed_students: [],
             start: new Date(),
             time: 0
         };
@@ -98,7 +100,13 @@
         currentTest.total = data.total;
         currentTest.passed = data.passed;
         currentTest.failed = data.failed;
-
+        //push failed students by data.failed [id] and then string manipulate until get to colon
+        currentTest.passed_students = getStudentsResults(data, true);
+        currentTest.failed_students = getStudentsResults(data, false);
+        //store module information
+        currentTest.module = data.module;
+        currentTest.moduleId = getModuleId(data);
+        testResults.push(currentTest);
         currentTest = null;
     });
 
@@ -116,9 +124,29 @@
         currentRun.total = data.total;
         currentRun.passed = data.passed;
         currentRun.failed = data.failed;
-
         generateReport(data, currentRun);
     });
+
+    var getModuleId = function(data) {
+        var id = data.module.slice(-2)[0];
+        return Number(id);
+    };
+
+    var getStudentsResults = function(data, passed) {
+        var temp_passed = [];
+        var temp_failed = [];
+        for (var i = 0; i < data.assertions.length; i++) {
+            var username = data.assertions[i].message;
+            username = username.split(":")[0];
+            if(data.assertions[i].result) {
+                temp_passed.push(username);
+            }
+            else {
+                temp_failed.push(username);
+            }
+        }
+        return passed ? temp_passed :  temp_failed;
+    };
 
     var generateReport = function(results, run) {
         var pad = function(n) {
@@ -127,7 +155,8 @@
 
         // Invoke the user-defined callback
         QUnit.jUnitReport({
-            results: results
+            overview: results,
+            tests: testResults
         });
     };
 

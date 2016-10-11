@@ -31,6 +31,12 @@ var incorrect = {
 };
 
 var submissions = [correct, incorrect];
+var studentRoster = {};
+for (var i = 0; i < submissions.length; i++) {
+    studentRoster[submissions[i].studentID] = [0,0,0,0,0];
+}
+
+var finalResults;
 
 QUnit.config.autostart = false;
 QUnit.config.testTimeout = 2000;
@@ -42,5 +48,18 @@ require(
 );
 
 QUnit.jUnitReport = function(report) {
-    console.log(report);
+    for (var i = 0; i < report.tests.length; i++) {
+        var test = report.tests[i];
+        var passed_students = test.passed_students;
+        for(var j = 0; j < passed_students.length; j++) {
+            var student = studentRoster[passed_students[j]];
+            // specific question
+            student[test.moduleId] += 1;
+            //total
+            student[0] += 1;
+        }
+    }
+    finalResults = JSON.stringify(studentRoster);
 };
+
+

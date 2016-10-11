@@ -71,7 +71,7 @@ QUnit.module( "testQuestionCase3D", {
   }
 });
 
-QUnit.test( "there should not be more than 10 instructions", function( assert ) {
+QUnit.test( "the number of instructions should be within range", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
     var original = submissions[i].question3;
     //must have made an attempt -- 50% of solution
