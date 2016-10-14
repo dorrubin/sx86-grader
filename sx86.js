@@ -183,9 +183,9 @@
     }
 
     exports.__decode();
-    if (exports.mem.flags.halt === true) {
-	return;
-    }
+ //    if (exports.mem.flags.halt === true) {
+	// return;
+ //    }
 
     if (exports.mem.flags.jmp === 0) {
       exports.mem.regs[6] += 1;

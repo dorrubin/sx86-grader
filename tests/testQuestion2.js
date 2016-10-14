@@ -8,18 +8,31 @@ QUnit.module( "testQuestionCase2A", {
   }
 });
 
-QUnit.test( "test double of memory address 10 and triple of 15", function( assert ) {
-  for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q2;
+QUnit.test( "test the content of address 10 and 15", function( assert ) {
+  var expecting = submissions.length;
+  var done = assert.async(expecting);
+  var c = 0;
+  var interval = setInterval(function() {
+    var original;
+    if(submissions[c].Q4) {
+      original = submissions[c].Q2;
+    }
+    else {
+      original = "000000000000000000000000";
+    }
     var userProgram = original.slice(24,-1);
     // input 6 and 7
     var testInputs = "900a9046b001900f9047b001";
     var testProgram = testInputs + userProgram;
-    LoadProgram(testProgram);
-    sx86_display.run(0);
-    assert.equal( sx86.mem.ram[10], 12, submissions[i].studentID + ": the 10th memory address should contain 12" );
-    assert.equal( sx86.mem.ram[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
-  }
+    var result = LoadProgram(testProgram);
+    assert.equal( result[10], 12, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    assert.equal( result[15], 21, submissions[c].studentID + ": the 15th memory address should contain 21" );
+    done();
+    c++;
+    if(c == expecting) {
+      clearInterval(interval);
+    }
+  }, 25);
 });
 
 //Case B
@@ -30,18 +43,31 @@ QUnit.module( "testQuestionCase2B", {
   }
 });
 
-QUnit.test( "test double of memory address 10", function( assert ) {
-  for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q2;
+QUnit.test( "test the content of address 10 and 15", function( assert ) {
+  var expecting = submissions.length;
+  var done = assert.async(expecting);
+  var c = 0;
+  var interval = setInterval(function() {
+    var original;
+    if(submissions[c].Q4) {
+      original = submissions[c].Q2;
+    }
+    else {
+      original = "000000000000000000000000";
+    }
     var userProgram = original.slice(24,-1);
-    // input 0 and 0 
+    // input 6 and 7
     var testInputs = "900a9040b001900f9040b001";
     var testProgram = testInputs + userProgram;
-    LoadProgram(testInputs);
-    sx86_display.run(0);
-    assert.equal( sx86.mem.ram[10], 0, submissions[i].studentID + ": the 10th memory address should contain 0" );
-    assert.equal( sx86.mem.ram[15], 0, submissions[i].studentID + ": the 10th memory address should contain 0" );
-  }
+    var result = LoadProgram(testProgram);
+    assert.equal( result[10], 0, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    assert.equal( result[15], 0, submissions[c].studentID + ": the 15th memory address should contain 21" );
+    done();
+    c++;
+    if(c == expecting) {
+      clearInterval(interval);
+    }
+  }, 25);
 });
 
 //Case C
@@ -54,15 +80,21 @@ QUnit.module( "testQuestionCase2C", {
 
 QUnit.test( "test double of memory address 10 and triple of 15", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q2;
+    var original;
+    if(submissions[i].Q4) {
+      original = submissions[i].Q2;
+    }
+    else {
+      original = "000000000000000000000000";
+    }
     var userProgram = original.slice(24,-1);
     // input 6 and 7
     var testInputs = "904a90c6b043910f9087b102";
     var testProgram = testInputs + userProgram;
-    LoadProgram(testProgram);
+    var result = LoadProgram(testProgram);
     sx86_display.run(0);
-    assert.equal( sx86.mem.ram[10], 12, submissions[i].studentID + ": the 10th memory address should contain 12" );
-    assert.equal( sx86.mem.ram[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
+    assert.equal( result[10], 12, submissions[i].studentID + ": the 10th memory address should contain 12" );
+    assert.equal( result[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
   }
 });
 
@@ -76,10 +108,16 @@ QUnit.module( "testQuestionCase2D", {
 
 QUnit.test( "the program should be within range of number of instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q2;
+    var original;
+    if(submissions[i].Q4) {
+      original = submissions[i].Q2;
+    }
+    else {
+      original = "000000000000000000000000";
+    }
     //must have made an attempt -- 50% of solution
-    assert.ok( original.length >= 50, submissions[i].studentID + ": there should be greater than 50 instruction characters to complete this program" );
-    //answer can be done in 100-- give 20% buffer
+    // assert.ok( original.length >= 50, submissions[i].studentID + ": there should be greater than 50 instruction characters to complete this program" );
+    // //answer can be done in 100-- give 20% buffer
     assert.ok( original.length <= 120, submissions[i].studentID + ": there should be less than 120 instruction characters to complete this program" );
   }
 });

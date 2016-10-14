@@ -12,21 +12,30 @@ var LoadProgram = function(input_instructions) {
     sx86.clear();
     // take machine code into ram
     sx86_display.load_program(program);
+    sx86_display.run(0);
+    return sx86.mem.ram;
 };
 
 var submissions = JSON.parse(data);
 var studentRoster = {};
 for (var i = 0; i < submissions.length; i++) {
-    console.log(submissions[i].studentID);
-    studentRoster[submissions[i].studentID] = [0,0,0,0,0];
+    studentRoster[submissions[i].studentID] = {
+        student_id: submissions[i].studentID,
+        total: 0,
+        Q1: 0,
+        Q2: 0,
+        Q3: 0,
+        Q4: 0
+    };
 }
 
 var finalResults;
 
 QUnit.config.autostart = false;
-QUnit.config.testTimeout = 2000;
+// QUnit.config.testTimeout = 2000;
 require(
     ["tests/testQuestion1", "tests/testQuestion2", "tests/testQuestion3", "tests/testQuestion4"],
+    // ["tests/testQuestion4"],
     function() {
         QUnit.start();
     }
@@ -39,12 +48,30 @@ QUnit.jUnitReport = function(report) {
         for(var j = 0; j < passed_students.length; j++) {
             var student = studentRoster[passed_students[j]];
             // specific question
-            student[test.moduleId] += 1;
+            student[("Q" + test.moduleId)] += 1;
             //total
-            student[0] += 1;
+            student["total"] += 1;
         }
     }
     finalResults = JSON.stringify(studentRoster);
 };
 
+var Q2flags = [];
+var Q3flags = [];
+var Q4flags = [];
+var plagarism = function() {
+    for(var i = 0; i < submissions.length - 1; i++) {
+        for(var j = i+1; j < submissions.length; j++) {
+            if(submissions[i].Q2 == submissions[j].Q2 && submissions[i].Q2 !== "") {
+                Q2flags.push([submissions[i], submissions[j]]);
+            }
+            if(submissions[i].Q3 == submissions[j].Q3 && submissions[i].Q3 !== "") {
+                Q3flags.push([submissions[i], submissions[j]]);
+            }
+            if(submissions[i].Q4 == submissions[j].Q4 && submissions[i].Q4 !== "") {
+                Q4flags.push([submissions[i], submissions[j]]);
+            }
+        }
+    }
+}();
 

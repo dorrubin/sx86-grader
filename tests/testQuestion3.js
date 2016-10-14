@@ -75,8 +75,8 @@ QUnit.test( "the number of instructions should be within range", function( asser
   for(var i = 0; i < submissions.length; i++) {
     var original = submissions[i].Q3;
     //must have made an attempt -- 50% of solution
-    assert.ok( original.length >= 60, submissions[i].studentID + ": there should be greater than 60 instructions to complete this program" );
-    //answer can be done in 128-- give ~20% buffer
+    // assert.ok( original.length >= 60, submissions[i].studentID + ": there should be greater than 60 instructions to complete this program" );
+    // //answer can be done in 128-- give ~20% buffer
     assert.ok( length <= 160, submissions[i].studentID + ": there should be less than 160 instruction characters to complete this program" );
   }
 });
