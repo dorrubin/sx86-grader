@@ -24,6 +24,7 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90039162b005";
     var testProgram = testInputs + userProgram;
+    // console.log(testProgram);
     var result = LoadProgram(testProgram);
     assert.equal( sx86.mem.ram[22], 6, submissions[c].studentID + ": the 22nd memory address should contain 6" );
     done();
@@ -59,6 +60,7 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90439100b044";
     var testProgram = testInputs + userProgram;
+    // console.log(testProgram);
     var result = LoadProgram(testProgram);
     assert.equal( sx86.mem.ram[22], 0, submissions[c].studentID + ": the 22nd memory address should contain 0" );
     done();
@@ -93,6 +95,7 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90039068b001";
     var testProgram = testInputs + userProgram;
+    // console.log(testProgram);
     var result = LoadProgram(testProgram);
     assert.equal( sx86.mem.ram[22], 5, submissions[c].studentID + ": the 22nd memory address should contain 5" );
     done();

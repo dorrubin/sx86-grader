@@ -2,12 +2,11 @@ import xlrd
 from collections import OrderedDict
 import simplejson as json
 import os
-from pyexcel_ods import get_data
 
 # List to hold dictionaries
 answer_list = []
 # Open the workbook and select the first worksheet
-rootdir = ('../HW1/partial')
+rootdir = ('submissions')  # UPDATE HW ROOT DIRECTORY HERE
 for subdir, dirs, files in os.walk(rootdir):
     files = [f for f in files if not f[0] == '.']
     dirs[:] = [d for d in dirs if not d[0] == '.' or str(d) == rootdirstr]
@@ -22,14 +21,12 @@ for subdir, dirs, files in os.walk(rootdir):
             filestr = str(file)
             fullpath = path + "/" + filestr
             question = filestr.split(".")[0]
-            # wb = get_data(fullpath)
             print(path)
             print(question)
             wb = xlrd.open_workbook(fullpath)
             sh = wb.sheet_by_index(0)
             row_values = sh.row_values(1)
             length = len(row_values)
-            # print(length)
             answer[question] = row_values[length - 1].rstrip()
         # END FILE LOOP
         answer_list.append(answer)
@@ -38,5 +35,5 @@ for subdir, dirs, files in os.walk(rootdir):
 j = json.dumps(answer_list)
 
 # Write to file
-with open('output.json', 'w') as f:
+with open('data.json', 'w') as f:
     f.write(j)

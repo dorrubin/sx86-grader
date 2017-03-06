@@ -14,7 +14,7 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var c = 0;
   var interval = setInterval(function() {
     var original;
-    if(submissions[c].Q4) {
+    if(submissions[c].Q2) {
       original = submissions[c].Q2;
     }
     else {
@@ -22,10 +22,12 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     }
     var userProgram = original.slice(24,-1);
     // input 6 and 7
-    var testInputs = "900a9046b001900f9047b001";
+    var testInputs = "900a9046b001900f9047b001"; // code to place input 6 and 7 in the registers
     var testProgram = testInputs + userProgram;
     var result = LoadProgram(testProgram);
+    // 12 - result of doubling 6
     assert.equal( result[10], 12, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    // 21 - result of tripling 7
     assert.equal( result[15], 21, submissions[c].studentID + ": the 15th memory address should contain 21" );
     done();
     c++;
@@ -49,7 +51,7 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var c = 0;
   var interval = setInterval(function() {
     var original;
-    if(submissions[c].Q4) {
+    if(submissions[c].Q2) {
       original = submissions[c].Q2;
     }
     else {
@@ -57,10 +59,12 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     }
     var userProgram = original.slice(24,-1);
     // input 6 and 7
-    var testInputs = "900a9040b001900f9040b001";
+    var testInputs = "900a9040b001900f9040b001"; // code to place input 0 and 0 in the registers
     var testProgram = testInputs + userProgram;
     var result = LoadProgram(testProgram);
+    // 0 - result of doubling 0
     assert.equal( result[10], 0, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    // 0 - result of tripling 0
     assert.equal( result[15], 0, submissions[c].studentID + ": the 15th memory address should contain 21" );
     done();
     c++;
@@ -81,7 +85,7 @@ QUnit.module( "testQuestionCase2C", {
 QUnit.test( "test double of memory address 10 and triple of 15", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
     var original;
-    if(submissions[i].Q4) {
+    if(submissions[i].Q2) {
       original = submissions[i].Q2;
     }
     else {
@@ -109,7 +113,7 @@ QUnit.module( "testQuestionCase2D", {
 QUnit.test( "the program should be within range of number of instructions", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
     var original;
-    if(submissions[i].Q4) {
+    if(submissions[i].Q2) {
       original = submissions[i].Q2;
     }
     else {

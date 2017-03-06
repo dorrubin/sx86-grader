@@ -16,7 +16,7 @@ var LoadProgram = function(input_instructions) {
     return sx86.mem.ram;
 };
 
-var submissions = JSON.parse(data);
+var submissions = JSON.parse(sample_data);
 var studentRoster = {};
 for (var i = 0; i < submissions.length; i++) {
     studentRoster[submissions[i].studentID] = {
@@ -32,10 +32,8 @@ for (var i = 0; i < submissions.length; i++) {
 var finalResults;
 
 QUnit.config.autostart = false;
-// QUnit.config.testTimeout = 2000;
 require(
-    ["tests/testQuestion1", "tests/testQuestion2", "tests/testQuestion3", "tests/testQuestion4"],
-    // ["tests/testQuestion4"],
+    ["js/tests/testQuestion1", "js/tests/testQuestion2", "js/tests/testQuestion3", "js/tests/testQuestion4"],
     function() {
         QUnit.start();
     }
@@ -56,12 +54,16 @@ QUnit.jUnitReport = function(report) {
     finalResults = JSON.stringify(studentRoster);
 };
 
+var Q1flags = [];
 var Q2flags = [];
 var Q3flags = [];
 var Q4flags = [];
 var plagarism = function() {
     for(var i = 0; i < submissions.length - 1; i++) {
         for(var j = i+1; j < submissions.length; j++) {
+            if(submissions[i].Q1 == submissions[j].Q1 && submissions[i].Q1 !== "") {
+                Q1flags.push([submissions[i].studentID, submissions[j].studentID]);
+            }
             if(submissions[i].Q2 == submissions[j].Q2 && submissions[i].Q2 !== "") {
                 Q2flags.push([submissions[i], submissions[j]]);
             }
@@ -73,5 +75,7 @@ var plagarism = function() {
             }
         }
     }
-}();
+};
+
+// plagarism();
 

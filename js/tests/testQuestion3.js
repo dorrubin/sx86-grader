@@ -10,7 +10,13 @@ QUnit.module( "testQuestionCase3A", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q3;
+    var original;
+    if(submissions[i].Q3) {
+      original = submissions[i].Q3;
+    }
+    else {
+      original = "000000000000000000000000000000000000000000000000";
+    }
     var userProgram = original.slice(48,-1);
     // input a = 3, b = 4, c = 5, d = 2
     var testInputs = "90019043b00190029044b00190039045b00190049042b001";
@@ -32,7 +38,13 @@ QUnit.module( "testQuestionCase3B", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q3;
+    var original;
+    if(submissions[i].Q3) {
+      original = submissions[i].Q3;
+    }
+    else {
+      original = "000000000000000000000000000000000000000000000000";
+    }
     var userProgram = original.slice(48,-1);
     var testInputs = "90019040b00190029040b00190039040b00190049040b001";
     var testProgram = testInputs + userProgram;
@@ -52,7 +64,13 @@ QUnit.module( "testQuestionCase3C", {
 
 QUnit.test( "test content of memory address 30", function( assert ) {
   for(var i = 0; i < submissions.length; i++) {
-    var original = submissions[i].Q3;
+    var original;
+    if(submissions[i].Q3) {
+      original = submissions[i].Q3;
+    }
+    else {
+      original = "000000000000000000000000000000000000000000000000";
+    }
     var userProgram = original.slice(48,-1);
     // input a = 3, b = 4, c = 5, d = 2
     var testInputs = "91419103b144914290c4b14390c39105b0c490c49102b0c4";
