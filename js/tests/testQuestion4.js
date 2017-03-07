@@ -10,7 +10,6 @@ QUnit.module( "testQuestionCase4A", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  // var done = assert.async(expecting);
   var c = 0;
   for (var i = 0; i < expecting; i++) {
     var original;
@@ -24,11 +23,8 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90039162b005";
     var testProgram = testInputs + userProgram;
-    // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 6, submissions[i].studentID + ": the 22nd memory address should contain 6" );
-    // done();
-    // c++;
+    assert.equal( result[22], 6, submissions[i].studentID + ": the 22nd memory address should contain 6" );
   }
 });
 
@@ -43,8 +39,6 @@ QUnit.module( "testQuestionCase4B", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  // var done = assert.async(expecting);
-  // var c = 0;
   for (var i = 0; i < expecting; i++) {
     var original;
     if(submissions[i].Q4) {
@@ -57,11 +51,8 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90439100b044";
     var testProgram = testInputs + userProgram;
-    // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 0, submissions[i].studentID + ": the 22nd memory address should contain 0" );
-    // done();
-    // c++;
+    assert.equal( result[22], 0, submissions[i].studentID + ": the 22nd memory address should contain 0" );
   }
 });
 
@@ -75,8 +66,6 @@ QUnit.module( "testQuestionCase4C", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  // var done = assert.async(expecting);
-  var c = 0;
   for (var i = 0; i < expecting; i++) {
     var original;
     if(submissions[i].Q4) {
@@ -89,12 +78,9 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     // input 6 and 7
     var testInputs = "90039068b001";
     var testProgram = testInputs + userProgram;
-    // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 5, submissions[i].studentID + ": the 22nd memory address should contain 5" );
-    // done();
-    // c++;
-  }  
+    assert.equal( result[22], 5, submissions[i].studentID + ": the 22nd memory address should contain 5" );
+  }
 });
 
 

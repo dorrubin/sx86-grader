@@ -77,5 +77,5 @@ var plagarism = function() {
     }
 };
 
-// plagarism();
+plagarism();
 

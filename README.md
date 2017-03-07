@@ -59,7 +59,7 @@
 
 7. Copy finalResults and paste into the online conversion tool: https://json-csv.com/
 8. Save the CSV and convert to points 
-
+9. Check the plagarism flags
 
 ## Possible improvements to the grader
 1. Convert JSON to CSV within app so that it calculates grades immediately.

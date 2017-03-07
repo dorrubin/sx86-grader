@@ -9,14 +9,10 @@ QUnit.module( "testQuestionCase1A", {
 });
 
 QUnit.test( "test the content of address 2016", function( assert ) {
-  // var expecting = submissions.length;
-  // assert.expect(expecting);
-  // var done = assert.async(expecting);
   for (var i = 0; i < submissions.length; i++) {
     var result = LoadProgram(submissions[i].Q1);
     assert.equal( result[2016], 2016, submissions[i].studentID + ": the 2016th memory address should contain the value 2016" );
   }
-  // done();
 });
 
 
@@ -29,8 +25,6 @@ QUnit.module( "testQuestionCase1B", {
 });
 
 QUnit.test( "the program should be within range of number of instructions", function( assert ) {
-  // var expecting = submissions.length;
-  // assert.expect(expecting);
   for(var i = 0; i < submissions.length; i++) {
     var original = submissions[i].Q1;
     //must have made an attempt -- 50% of solution
@@ -42,8 +36,7 @@ QUnit.test( "the program should be within range of number of instructions", func
 
 QUnit.test( "there can not be repetitive instructions", function( assert ) {
   var expecting = submissions.length;
-  assert.expect(expecting);
-  for(var i = 0; i < submissions.length; i++) {
+  for(var i = 0; i < expecting; i++) {
     var length = submissions[i].Q1.length;
     var instruction = submissions[i].Q1;
     var noDups = true;

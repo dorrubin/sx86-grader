@@ -10,8 +10,6 @@ QUnit.module( "testQuestionCase2A", {
 
 QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var expecting = submissions.length;
-  // var done = assert.async(expecting);
-  // var c = 0;
   var original;
   for (var i = 0; i < expecting; i++) {
     if(submissions[i].Q2) {
@@ -30,8 +28,6 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     // 21 - result of tripling 7
     assert.equal( result[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
   }
-  // done();
-  // c++;
 });
 
 //Case B
@@ -44,8 +40,6 @@ QUnit.module( "testQuestionCase2B", {
 
 QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var expecting = submissions.length;
-  // var done = assert.async(expecting);
-  var c = 0;
   for (var i = 0; i < expecting; i++) {
     var original;
     if(submissions[i].Q2) {
@@ -64,8 +58,6 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     // 0 - result of tripling 0
     assert.equal( result[15], 0, submissions[i].studentID + ": the 15th memory address should contain 21" );
   }
-    // done();
-    // c++;
 });
 
 //Case C
@@ -90,7 +82,6 @@ QUnit.test( "test double of memory address 10 and triple of 15", function( asser
     var testInputs = "904a90c6b043910f9087b102";
     var testProgram = testInputs + userProgram;
     var result = LoadProgram(testProgram);
-    sx86_display.run(0);
     assert.equal( result[10], 12, submissions[i].studentID + ": the 10th memory address should contain 12" );
     assert.equal( result[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
   }
@@ -114,7 +105,7 @@ QUnit.test( "the program should be within range of number of instructions", func
       original = "000000000000000000000000";
     }
     //must have made an attempt -- 50% of solution
-    // assert.ok( original.length >= 50, submissions[i].studentID + ": there should be greater than 50 instruction characters to complete this program" );
+    assert.ok( original.length >= 50, submissions[i].studentID + ": there should be greater than 50 instruction characters to complete this program" );
     // //answer can be done in 100-- give 20% buffer
     assert.ok( original.length <= 120, submissions[i].studentID + ": there should be less than 120 instruction characters to complete this program" );
   }
