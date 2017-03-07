@@ -10,12 +10,12 @@ QUnit.module( "testQuestionCase2A", {
 
 QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var expecting = submissions.length;
-  var done = assert.async(expecting);
-  var c = 0;
-  var interval = setInterval(function() {
-    var original;
-    if(submissions[c].Q2) {
-      original = submissions[c].Q2;
+  // var done = assert.async(expecting);
+  // var c = 0;
+  var original;
+  for (var i = 0; i < expecting; i++) {
+    if(submissions[i].Q2) {
+      original = submissions[i].Q2;
     }
     else {
       original = "000000000000000000000000";
@@ -26,15 +26,12 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     var testProgram = testInputs + userProgram;
     var result = LoadProgram(testProgram);
     // 12 - result of doubling 6
-    assert.equal( result[10], 12, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    assert.equal( result[10], 12, submissions[i].studentID + ": the 10th memory address should contain 12" );
     // 21 - result of tripling 7
-    assert.equal( result[15], 21, submissions[c].studentID + ": the 15th memory address should contain 21" );
-    done();
-    c++;
-    if(c == expecting) {
-      clearInterval(interval);
-    }
-  }, 25);
+    assert.equal( result[15], 21, submissions[i].studentID + ": the 15th memory address should contain 21" );
+  }
+  // done();
+  // c++;
 });
 
 //Case B
@@ -47,12 +44,12 @@ QUnit.module( "testQuestionCase2B", {
 
 QUnit.test( "test the content of address 10 and 15", function( assert ) {
   var expecting = submissions.length;
-  var done = assert.async(expecting);
+  // var done = assert.async(expecting);
   var c = 0;
-  var interval = setInterval(function() {
+  for (var i = 0; i < expecting; i++) {
     var original;
-    if(submissions[c].Q2) {
-      original = submissions[c].Q2;
+    if(submissions[i].Q2) {
+      original = submissions[i].Q2;
     }
     else {
       original = "000000000000000000000000";
@@ -63,15 +60,12 @@ QUnit.test( "test the content of address 10 and 15", function( assert ) {
     var testProgram = testInputs + userProgram;
     var result = LoadProgram(testProgram);
     // 0 - result of doubling 0
-    assert.equal( result[10], 0, submissions[c].studentID + ": the 10th memory address should contain 12" );
+    assert.equal( result[10], 0, submissions[i].studentID + ": the 10th memory address should contain 12" );
     // 0 - result of tripling 0
-    assert.equal( result[15], 0, submissions[c].studentID + ": the 15th memory address should contain 21" );
-    done();
-    c++;
-    if(c == expecting) {
-      clearInterval(interval);
-    }
-  }, 25);
+    assert.equal( result[15], 0, submissions[i].studentID + ": the 15th memory address should contain 21" );
+  }
+    // done();
+    // c++;
 });
 
 //Case C

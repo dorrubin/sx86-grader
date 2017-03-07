@@ -10,12 +10,12 @@ QUnit.module( "testQuestionCase4A", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  var done = assert.async(expecting);
+  // var done = assert.async(expecting);
   var c = 0;
-  var interval = setInterval(function() {
+  for (var i = 0; i < expecting; i++) {
     var original;
-    if(submissions[c].Q4) {
-      original = submissions[c].Q4;
+    if(submissions[i].Q4) {
+      original = submissions[i].Q4;
     }
     else {
       original = "000000000000";
@@ -26,13 +26,10 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     var testProgram = testInputs + userProgram;
     // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 6, submissions[c].studentID + ": the 22nd memory address should contain 6" );
-    done();
-    c++;
-    if(c == expecting) {
-      clearInterval(interval);
-    }
-  }, 25);
+    assert.equal( sx86.mem.ram[22], 6, submissions[i].studentID + ": the 22nd memory address should contain 6" );
+    // done();
+    // c++;
+  }
 });
 
 
@@ -46,12 +43,12 @@ QUnit.module( "testQuestionCase4B", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  var done = assert.async(expecting);
-  var c = 0;
-  var interval = setInterval(function() {
+  // var done = assert.async(expecting);
+  // var c = 0;
+  for (var i = 0; i < expecting; i++) {
     var original;
-    if(submissions[c].Q4) {
-      original = submissions[c].Q4;
+    if(submissions[i].Q4) {
+      original = submissions[i].Q4;
     }
     else {
       original = "000000000000";
@@ -62,13 +59,10 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     var testProgram = testInputs + userProgram;
     // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 0, submissions[c].studentID + ": the 22nd memory address should contain 0" );
-    done();
-    c++;
-    if(c == expecting) {
-      clearInterval(interval);
-    }
-  }, 25);
+    assert.equal( sx86.mem.ram[22], 0, submissions[i].studentID + ": the 22nd memory address should contain 0" );
+    // done();
+    // c++;
+  }
 });
 
 //Case c
@@ -81,12 +75,12 @@ QUnit.module( "testQuestionCase4C", {
 
 QUnit.test( "test content of memory address 22", function( assert ) {
   var expecting = submissions.length;
-  var done = assert.async(expecting);
+  // var done = assert.async(expecting);
   var c = 0;
-  var interval = setInterval(function() {
+  for (var i = 0; i < expecting; i++) {
     var original;
-    if(submissions[c].Q4) {
-      original = submissions[c].Q4;
+    if(submissions[i].Q4) {
+      original = submissions[i].Q4;
     }
     else {
       original = "000000000000";
@@ -97,13 +91,10 @@ QUnit.test( "test content of memory address 22", function( assert ) {
     var testProgram = testInputs + userProgram;
     // console.log(testProgram);
     var result = LoadProgram(testProgram);
-    assert.equal( sx86.mem.ram[22], 5, submissions[c].studentID + ": the 22nd memory address should contain 5" );
-    done();
-    c++;
-    if(c == expecting) {
-      clearInterval(interval);
-    }
-  }, 25);
+    assert.equal( sx86.mem.ram[22], 5, submissions[i].studentID + ": the 22nd memory address should contain 5" );
+    // done();
+    // c++;
+  }  
 });
 
 

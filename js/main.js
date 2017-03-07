@@ -16,7 +16,7 @@ var LoadProgram = function(input_instructions) {
     return sx86.mem.ram;
 };
 
-var submissions = JSON.parse(sample_data);
+var submissions = JSON.parse(data);
 var studentRoster = {};
 for (var i = 0; i < submissions.length; i++) {
     studentRoster[submissions[i].studentID] = {
