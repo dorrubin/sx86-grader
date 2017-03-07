@@ -55,11 +55,13 @@
 
 7. Open index.html in a browser
 
-6. Open the Inspect browswer tool, open up the console and type: finalResults
+6. Open the Inspect browser tool, open up the console and type: finalResults
 
 7. Copy finalResults and paste into the online conversion tool: https://json-csv.com/
-8. Save the CSV and convert to points 
-9. Check the plagarism flags
+
+8. Save the CSV and convert to points  
+
+9. Check the plagiarism flags  
 
 ## Possible improvements to the grader
 1. Convert JSON to CSV within app so that it calculates grades immediately.
