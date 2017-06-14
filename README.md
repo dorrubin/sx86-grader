@@ -15,7 +15,7 @@
     *The result should be each student has a studentID_HW1 folder containing Q1.xlsx, Q2.xlsx, Q3.xlsx and Q4.xlsx.*  
 
 
-2. In main.py, update the rootdir variable to be the top folder containing the unzipped folders of student submission
+2. In extractInstructions.py, update the rootdir variable to be the top folder containing the unzipped folders of student submission
 
 3. run in terminal:
     ```bash
